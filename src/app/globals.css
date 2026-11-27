@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* The print copy of the resume is hidden on screen and is the only thing printed. */
+.print-only {
+  display: none;
+}
+
+.resume-page,
+.resume-page * {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Editor preview: each resume section can be clicked to jump to its form panel. */
+.click-to-edit .resume-page {
+  cursor: pointer;
+}
+/* An outline, not a border or radius, so the hover never changes the template's own shapes. */
+.click-to-edit [data-section]:hover {
+  outline: 3px solid rgba(99, 102, 241, 0.45);
+  outline-offset: 1px;
+}
+
+/* Brief highlight on the form panel a click jumped to. */
+@keyframes jump-flash {
+  0% { box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.7); background-color: #eef2ff; }
+  100% { box-shadow: 0 0 0 3px rgba(99, 102, 241, 0); }
+}
+.jump-flash {
+  animation: jump-flash 1.4s ease-out;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #fff;
+  }
+  .screen-only {
+    display: none !important;
+  }
+  .print-only {
+    display: block;
+  }
+  /* A4 is 1122.5px tall; the 1123px screen minimum would spill a blank second page. */
+  .print-only .resume-page {
+    min-height: 296.5mm !important;
+  }
+}
