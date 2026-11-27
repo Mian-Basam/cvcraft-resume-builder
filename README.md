@@ -166,22 +166,9 @@ written in the project itself.
 
 ## How it works under the hood
 
-```
-             ┌──────────────── localStorage ("resume-builder:v3") ────────────────┐
-             │ { docs: { id: { kind, name, data, settings } }, order, activeId }  │
-             └──────────────▲──────────────────────────────┬──────────────────────┘
-                 save on    │                              │ load on open
-                 each edit  │                              ▼
-   ┌──────────────┐   ┌─────┴─────────────────────────────────────┐
-   │ EditorForm / │──▶│ useDocument()  state = { data, settings } │──▶ undo / redo stacks
-   │ CoverForm    │   └─────┬─────────────────────────────────────┘
-   └──────▲───────┘         │ data + buildTheme(settings)
-          │                 ▼
-   click-to-edit   ┌─────────────────────────────┐    window.print()  ┌──────────┐
-   (clickToEdit)◀──│ <Template data theme />      │──────────────────▶│ PDF (A4) │
-                   │ 794×1123 page in ScaledPage  │   @media print     └──────────┘
-                   └─────────────────────────────┘
-```
+<p align="center">
+  <img src="docs/architecture-flowchart.png" alt="CVCraft data flow: form edits update useDocument state, which saves to localStorage, keeps undo/redo snapshots, and renders the template into a scaled A4 page that prints to PDF; clicking the preview jumps back to the matching form field" width="760">
+</p>
 
 1. **One data model, many layouts.** A resume is a plain object: `personal`, `experience`, `education`,
    `projects`, `skills`, `languages`, `certifications`, `interests`, plus `sectionOrder` and `hiddenSections`.
