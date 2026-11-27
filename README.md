@@ -1,26 +1,39 @@
-# CVCraft: building a resume builder with 107 designs, live preview and click-to-edit
+<div align="center">
 
-> A browser-based resume and cover-letter builder made with Next.js, React and Tailwind CSS.
-> Your data never leaves the browser, every template is editable, and "Download PDF" works without a server.
+# CVCraft
 
----
+### Resume & cover-letter builder: 107 templates × 10 palettes, live A4 preview, click-to-edit
 
-## Contents
+![Next.js](https://img.shields.io/badge/Next.js-14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Privacy](https://img.shields.io/badge/Privacy-100%25_in--browser-16A34A?style=for-the-badge)
 
-1. [Why we built CVCraft](#1-why-we-built-cvcraft)
-2. [Who it's for: use cases](#2-who-its-for-use-cases)
-3. [A quick tour of the features](#3-a-quick-tour-of-the-features)
-4. [Tools and technologies](#4-tools-and-technologies)
-5. [Modules and packages](#5-modules-and-packages)
-6. [How it works under the hood](#6-how-it-works-under-the-hood)
-7. [Project structure, file by file](#7-project-structure-file-by-file)
-8. [Running the project](#8-running-the-project)
-9. [Adding your own template](#9-adding-your-own-template)
-10. [Limitations and what's next](#10-limitations-and-whats-next)
+<p>A browser-based resume and cover-letter builder made with Next.js, React and Tailwind CSS. Your data never leaves the browser, every template is editable, and "Download PDF" works without a server.</p>
+
+[**Features**](#a-quick-tour-of-the-features) &nbsp;•&nbsp; [**Quick Start**](#running-the-project) &nbsp;•&nbsp; [**Architecture**](#how-it-works-under-the-hood) &nbsp;•&nbsp; [**Tech Stack**](#tools-and-technologies) &nbsp;•&nbsp; [**Structure**](#project-structure-file-by-file)
+
+</div>
 
 ---
 
-## 1. Why we built CVCraft
+<details>
+<summary><b>Table of contents</b></summary>
+
+- [Why we built CVCraft](#why-we-built-cvcraft)
+- [Who it's for: use cases](#who-its-for-use-cases)
+- [A quick tour of the features](#a-quick-tour-of-the-features)
+- [Tools and technologies](#tools-and-technologies)
+- [Modules and packages](#modules-and-packages)
+- [How it works under the hood](#how-it-works-under-the-hood)
+- [Project structure, file by file](#project-structure-file-by-file)
+- [Running the project](#running-the-project)
+- [Adding your own template](#adding-your-own-template)
+- [Limitations and what's next](#limitations-and-whats-next)
+
+</details>
+
+## Why we built CVCraft
 
 Writing a resume is hard enough without fighting a word processor. Margins shift, a second page appears out of
 nowhere, and changing the design means copying everything into a new file.
@@ -40,7 +53,7 @@ A few principles shaped the project:
 
 ---
 
-## 2. Who it's for: use cases
+## Who it's for: use cases
 
 | Who | What they do with CVCraft |
 |---|---|
@@ -57,7 +70,7 @@ A few principles shaped the project:
 
 ---
 
-## 3. A quick tour of the features
+## A quick tour of the features
 
 **The editor (`/editor`)**
 - Live A4 preview beside the form; on phones, Edit and Preview become two tabs.
@@ -87,7 +100,7 @@ A few principles shaped the project:
 
 ---
 
-## 4. Tools and technologies
+## Tools and technologies
 
 | Technology | Version | What it does here |
 |---|---|---|
@@ -108,7 +121,10 @@ Nunito, Bebas Neue, Rye and Press Start 2P.
 
 ---
 
-## 5. Modules and packages
+## Modules and packages
+
+<details>
+<summary><b>Show the full modules and packages</b></summary>
 
 CVCraft deliberately has a **tiny dependency list**. Everything else (charts, avatars, PDF, storage, undo) is
 written in the project itself.
@@ -144,9 +160,11 @@ written in the project itself.
 | `lib/clickToEdit.js` | Maps a click on the preview to the matching form field by matching text against the resume data. |
 | `lib/resumeScore.js` | The 100-point resume score and tips. |
 
+</details>
+
 ---
 
-## 6. How it works under the hood
+## How it works under the hood
 
 ```
              ┌──────────────── localStorage ("resume-builder:v3") ────────────────┐
@@ -185,7 +203,10 @@ written in the project itself.
 
 ---
 
-## 7. Project structure, file by file
+## Project structure, file by file
+
+<details>
+<summary><b>Show the full project structure, file by file</b></summary>
 
 ```
 Resume builder/
@@ -465,9 +486,11 @@ Resume builder/
 | `AccordionCv.js` | Every section as an expanded accordion panel. |
 | `FoldedBrochureCv.js` | Tri-fold leaflet with dashed fold lines. |
 
+</details>
+
 ---
 
-## 8. Running the project
+## Running the project
 
 ### Requirements
 - **Node.js 18.17 or newer** (tested on Node 20.20) and npm.
@@ -510,7 +533,7 @@ Then open:
 
 ---
 
-## 9. Adding your own template
+## Adding your own template
 
 1. Create `src/components/templates/collection/<category>/MyDesign.js`:
 
@@ -554,7 +577,7 @@ Then open:
 
 ---
 
-## 10. Limitations and what's next
+## Limitations and what's next
 
 - **Data lives in one browser.** Clearing site data deletes your documents, and a document doesn't follow you to
   another device. Large photos count toward the browser's ~5 MB `localStorage` limit; when it is full, saving fails
@@ -571,3 +594,15 @@ Then open:
 ---
 
 *Built with Next.js, React, Tailwind CSS and a lot of SVG. Fill it in once, and wear any design.*
+
+---
+
+<div align="center">
+
+**Built by [Mian Basam Ahmad](https://github.com/Mian-Basam)** · Software Engineer & Tech Lead
+
+[![Blog](https://img.shields.io/badge/Blog-mian--basam.github.io-222222?style=flat-square&logo=githubpages&logoColor=white)](https://mian-basam.github.io) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mian-basam-ahmad-68b997147/) [![GitHub](https://img.shields.io/badge/GitHub-Mian--Basam-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Mian-Basam)
+
+<sub>If this project helped you, consider giving it a ⭐</sub>
+
+</div>
